@@ -7,6 +7,7 @@
 // #include <windows.h>
 #define EVERYTHINGUSERAPI
 #include "Everything.h"
+#include <cstdint>
 
 int _tmain(int argc, TCHAR **argv)
 {
