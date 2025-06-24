@@ -4,13 +4,13 @@
 
 #include <stdio.h>
 #include <tchar.h>
-#include <windows.h>
+// #include <windows.h>
 #define EVERYTHINGUSERAPI
 #include "Everything.h"
 
 int _tmain(int argc, TCHAR **argv)
 {
-	uw_enable_utf8();
+	// uw_enable_utf8();
 	if (argc == 2)
 	{
 		Everything_SetSearchW(argv[1]);
