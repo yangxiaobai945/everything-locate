@@ -1,0 +1,36 @@
+name: Build locate.vcxproj
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch: # Enables manual triggering
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      # Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Set up MSBuild environment
+      - name: Add MSBuild to PATH
+        uses: microsoft/setup-msbuild@v2
+        with:
+          vs-version: '17.0' # Visual Studio 2022 for v143 toolset
+
+      # Build Debug configuration
+      - name: Build Debug
+        run: msbuild locate.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:PlatformToolset=v143
+
+      # Build Release configuration
+      - name: Build Release
+        run: msbuild locate.vcxproj /p:Configuration=Release /p:Platform=x64 /p:PlatformToolset=v143
+
+      # Upload Debug artifacts
+      - name: Upload Debug
